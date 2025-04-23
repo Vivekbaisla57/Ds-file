@@ -1,0 +1,40 @@
+#include <stdio.h>
+
+void concatenate(int arr1[], int n1, int arr2[], int n2, int arr3[]) {
+    for (int i = 0; i < n1; i++) {
+        arr3[i] = arr1[i];
+    }
+    for (int i = 0; i < n2; i++) {
+        arr3[n1 + i] = arr2[i];
+    }
+}
+
+int main() {
+    int arr1[100], arr2[100], arr3[200], n1, n2;
+
+    printf("Enter number of elements in first array: ");
+    scanf("%d", &n1);
+    
+    printf("Enter elements of first array:\n");
+    for (int i = 0; i < n1; i++) {
+        scanf("%d", &arr1[i]);
+    }
+
+    printf("Enter number of elements in second array: ");
+    scanf("%d", &n2);
+    
+    printf("Enter elements of second array:\n");
+    for (int i = 0; i < n2; i++) {
+        scanf("%d", &arr2[i]);
+    }
+
+    concatenate(arr1, n1, arr2, n2, arr3);
+
+    printf("Array after concatenation:\n");
+    for (int i = 0; i < n1 + n2; i++) {
+        printf("%d ", arr3[i]);
+    }
+    printf("\n");
+
+    return 0;
+}
