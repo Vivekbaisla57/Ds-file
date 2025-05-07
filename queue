@@ -1,0 +1,45 @@
+#include<stdio.h>
+int queue[10], front = -1, rear=-1, max=8;
+void enqueue (int item)
+{
+    if(rear == max-1)
+    {
+        printf("overflow");
+    }
+    else {
+        if(front == -1 && rear == -1)
+        {
+            front = 0;
+            rear = 0;
+        }
+        else
+        {
+            rear = rear + 1;
+        }
+        queue[rear] = item;
+    }
+}
+int dequeue ()
+{
+    int y;
+    if(front == -1 || front > rear)
+    {
+        printf("underflow");
+    }
+    else {
+        y = queue[front];
+        if(front == rear)
+        {
+            front = rear = -1;
+        }
+            else
+            {
+            front = front + 1;}
+        return y;
+    }
+}
+void main() {
+    enqueue(10);
+    enqueue(20);
+    printf("%d", dequeue());
+}
