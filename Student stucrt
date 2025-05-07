@@ -1,0 +1,29 @@
+#include <stdio.h>
+
+struct Person {
+    char name[50];
+    int citno;
+    float salary;
+};
+
+int main() {
+    struct Person person1[10]; // Declare the structure array
+
+    for (int i = 0; i < 10; i++) {
+        printf("Enter details for person %d:\n", i + 1);
+        printf("Name: ");
+        scanf("%s", person1[i].name); // Corrected scanf for string
+        printf("Citizenship Number: ");
+        scanf("%d", &person1[i].citno); // Corrected scanf for int
+        printf("Salary: ");
+        scanf("%f", &person1[i].salary); // Corrected scanf for float
+        printf("\n");
+    }
+
+    person1[0].citno = 12345; // This line is correct
+
+    // You might want to print the updated value to verify
+    printf("Updated citizenship number for person 1: %d\n", person1[0].citno);
+
+    return 0;
+}
