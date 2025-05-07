@@ -1,0 +1,53 @@
+#include<stdio.h>
+
+int top = -1;
+int stack[60];
+
+void push(int);
+int pop();
+int evaluate(char, int, int);
+
+void main() {
+    char m[50], ch;
+    int i, option1, option2, result, h;
+    printf("Enter postfix expression: ");
+    scanf("%s", &m);
+    
+    for (i = 0; m[i] != '\0'; i++) {
+        ch = m[i];
+        
+        if (ch >= '0' && ch <= '9')
+            push(ch - '0');
+        else {
+            option2 = pop();
+            option1 = pop();
+            result = evaluate(ch, option1, option2);
+            push(result);
+        }
+    }
+    
+    h = pop();
+    printf("Evaluated value = %d\n", h);
+}
+
+void push(int n) {
+    top++;
+    stack[top] = n;
+}
+
+int pop() {
+    int result;
+    result = stack[top];
+    top--;
+    return result;
+}
+
+int evaluate(char ch, int option1, int option2) {
+    switch (ch) {
+        case '+': return (option1 + option2);
+        case '-': return (option1 - option2);
+        case '*': return (option1 * option2);
+        case '/': return (option1 / option2);
+        default: return 0;
+    }
+}
